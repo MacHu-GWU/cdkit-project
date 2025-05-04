@@ -34,10 +34,9 @@ test = ["astroid (>=2,<4)", "pytest", "pytest-cov", "pytest-xdist"]
 name = "attrs"
 version = "25.3.0"
 description = "Classes Without Boilerplate"
-optional = true
+optional = false
 python-versions = ">=3.8"
 groups = ["main"]
-markers = "extra == \"doc\""
 files = [
     {file = "attrs-25.3.0-py3-none-any.whl", hash = "sha256:427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3"},
     {file = "attrs-25.3.0.tar.gz", hash = "sha256:75d7cefc7fb576747b2c81b4442d4d4a1ce0900973527c011d1030fd3bf4af1b"},
@@ -70,6 +69,78 @@ attrs = ">=21.3.0"
 [package.extras]
 docs = ["Sphinx (==5.3.0)", "docfly (==2.0.1)", "furo (==2023.03.27)", "ipython (==8.10.0)", "nbsphinx (==0.8.12)", "pygments (==2.15.1)", "rstobj (==1.2.1)", "sphinx-copybutton (==0.5.1)", "sphinx-design (==0.5.0)", "sphinx-jinja (==2.0.2)"]
 tests = ["cached-property (>=1.5.2) ; python_version < \"3.8\"", "pytest", "pytest-cov"]
+
+[[package]]
+name = "aws-cdk-asset-awscli-v1"
+version = "2.2.234"
+description = "A library that contains the AWS CLI for use in Lambda Layers"
+optional = false
+python-versions = "~=3.9"
+groups = ["main"]
+files = [
+    {file = "aws_cdk_asset_awscli_v1-2.2.234-py3-none-any.whl", hash = "sha256:aa6c2467e21317746d38ce00d7695c49627be892a17b4e30b83ef2483e7c0ceb"},
+    {file = "aws_cdk_asset_awscli_v1-2.2.234.tar.gz", hash = "sha256:1a581d3ec2addfe222ab4315d1f1f8e204f0d765c69ace3741337878c5c498b3"},
+]
+
+[package.dependencies]
+jsii = ">=1.111.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<4.3.0"
+
+[[package]]
+name = "aws-cdk-asset-node-proxy-agent-v6"
+version = "2.1.0"
+description = "@aws-cdk/asset-node-proxy-agent-v6"
+optional = false
+python-versions = "~=3.8"
+groups = ["main"]
+files = [
+    {file = "aws_cdk.asset_node_proxy_agent_v6-2.1.0-py3-none-any.whl", hash = "sha256:24a388b69a44d03bae6dbf864c4e25ba650d4b61c008b4568b94ffbb9a69e40e"},
+    {file = "aws_cdk_asset_node_proxy_agent_v6-2.1.0.tar.gz", hash = "sha256:1f292c0631f86708ba4ee328b3a2b229f7e46ea1c79fbde567ee9eb119c2b0e2"},
+]
+
+[package.dependencies]
+jsii = ">=1.103.1,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<5.0.0"
+
+[[package]]
+name = "aws-cdk-cloud-assembly-schema"
+version = "41.2.0"
+description = "Schema for the protocol between CDK framework and CDK CLI"
+optional = false
+python-versions = "~=3.8"
+groups = ["main"]
+files = [
+    {file = "aws_cdk.cloud_assembly_schema-41.2.0-py3-none-any.whl", hash = "sha256:779ca7e3edb02695e0a94a1f38e322b04fbe192cd7944553f80b681a21edd670"},
+    {file = "aws_cdk_cloud_assembly_schema-41.2.0.tar.gz", hash = "sha256:7064ac13f6944fd53f8d8eace611d3c5d8db7014049d629f5c47ede8dc5f2e3b"},
+]
+
+[package.dependencies]
+jsii = ">=1.108.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<4.3.0"
+
+[[package]]
+name = "aws-cdk-lib"
+version = "2.194.0"
+description = "Version 2 of the AWS Cloud Development Kit library"
+optional = false
+python-versions = "~=3.9"
+groups = ["main"]
+files = [
+    {file = "aws_cdk_lib-2.194.0-py3-none-any.whl", hash = "sha256:ed331e6afa90eaa7d84ef73f15344053fc2070727c0d504edb910fed53197b54"},
+    {file = "aws_cdk_lib-2.194.0.tar.gz", hash = "sha256:0c42f13bc710b200fcf1a0f6c8a86354d24d05a565418b861d25776ca5355dae"},
+]
+
+[package.dependencies]
+"aws-cdk.asset-awscli-v1" = ">=2.2.229,<3.0.0"
+"aws-cdk.asset-node-proxy-agent-v6" = ">=2.1.0,<3.0.0"
+"aws-cdk.cloud-assembly-schema" = ">=41.0.0,<42.0.0"
+constructs = ">=10.0.0,<11.0.0"
+jsii = ">=1.110.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<4.3.0"
 
 [[package]]
 name = "babel"
@@ -174,6 +245,33 @@ test = ["build[uv,virtualenv]", "filelock (>=3)", "pytest (>=6.2.4)", "pytest-co
 typing = ["build[uv]", "importlib-metadata (>=5.1)", "mypy (>=1.9.0,<1.10.0)", "tomli", "typing-extensions (>=3.7.4.3)"]
 uv = ["uv (>=0.1.18)"]
 virtualenv = ["virtualenv (>=20.0.35)"]
+
+[[package]]
+name = "cattrs"
+version = "24.1.3"
+description = "Composable complex class support for attrs and dataclasses."
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "cattrs-24.1.3-py3-none-any.whl", hash = "sha256:adf957dddd26840f27ffbd060a6c4dd3b2192c5b7c2c0525ef1bd8131d8a83f5"},
+    {file = "cattrs-24.1.3.tar.gz", hash = "sha256:981a6ef05875b5bb0c7fb68885546186d306f10f0f6718fe9b96c226e68821ff"},
+]
+
+[package.dependencies]
+attrs = ">=23.1.0"
+exceptiongroup = {version = ">=1.1.1", markers = "python_version < \"3.11\""}
+typing-extensions = {version = ">=4.1.0,<4.6.3 || >4.6.3", markers = "python_version < \"3.11\""}
+
+[package.extras]
+bson = ["pymongo (>=4.4.0)"]
+cbor2 = ["cbor2 (>=5.4.6)"]
+msgpack = ["msgpack (>=1.0.5)"]
+msgspec = ["msgspec (>=0.18.5) ; implementation_name == \"cpython\""]
+orjson = ["orjson (>=3.9.2) ; implementation_name == \"cpython\""]
+pyyaml = ["pyyaml (>=6.0)"]
+tomlkit = ["tomlkit (>=0.11.8)"]
+ujson = ["ujson (>=5.7.0)"]
 
 [[package]]
 name = "certifi"
@@ -386,6 +484,23 @@ files = [
 ]
 
 [[package]]
+name = "constructs"
+version = "10.4.2"
+description = "A programming model for software-defined state"
+optional = false
+python-versions = "~=3.8"
+groups = ["main"]
+files = [
+    {file = "constructs-10.4.2-py3-none-any.whl", hash = "sha256:1f0f59b004edebfde0f826340698b8c34611f57848139b7954904c61645f13c1"},
+    {file = "constructs-10.4.2.tar.gz", hash = "sha256:ce54724360fffe10bab27d8a081844eb81f5ace7d7c62c84b719c49f164d5307"},
+]
+
+[package.dependencies]
+jsii = ">=1.102.0,<2.0.0"
+publication = ">=0.0.3"
+typeguard = ">=2.13.3,<2.14.0"
+
+[[package]]
 name = "coverage"
 version = "7.7.1"
 description = "Code coverage measurement for Python"
@@ -582,10 +697,10 @@ files = [
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
-optional = true
+optional = false
 python-versions = ">=3.7"
 groups = ["main"]
-markers = "(extra == \"test\" or extra == \"doc\") and python_version < \"3.11\""
+markers = "python_version < \"3.11\""
 files = [
     {file = "exceptiongroup-1.2.2-py3-none-any.whl", hash = "sha256:3111b9d131c238bec2f8f516e123e14ba243563fb135d3fe885990585aa7795b"},
     {file = "exceptiongroup-1.2.2.tar.gz", hash = "sha256:47c2edf7c6738fafb49fd34290706d1a1a2f4d1c6df275526b62cbb4aa5393cc"},
@@ -718,6 +833,29 @@ doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linke
 enabler = ["pytest-enabler (>=2.2)"]
 perf = ["ipython"]
 test = ["flufl.flake8", "importlib_resources (>=1.3) ; python_version < \"3.9\"", "jaraco.test (>=5.4)", "packaging", "pyfakefs", "pytest (>=6,!=8.1.*)", "pytest-perf (>=0.9.2)"]
+type = ["pytest-mypy"]
+
+[[package]]
+name = "importlib-resources"
+version = "6.5.2"
+description = "Read resources from Python packages"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "importlib_resources-6.5.2-py3-none-any.whl", hash = "sha256:789cfdc3ed28c78b67a06acb8126751ced69a3d5f79c095a98298cd8a760ccec"},
+    {file = "importlib_resources-6.5.2.tar.gz", hash = "sha256:185f87adef5bcc288449d98fb4fba07cea78bc036455dd44c5fc4a2fe78fed2c"},
+]
+
+[package.dependencies]
+zipp = {version = ">=3.1.0", markers = "python_version < \"3.10\""}
+
+[package.extras]
+check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1) ; sys_platform != \"cygwin\""]
+cover = ["pytest-cov"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
+enabler = ["pytest-enabler (>=2.2)"]
+test = ["jaraco.test (>=5.4)", "pytest (>=6,!=8.1.*)", "zipp (>=3.17)"]
 type = ["pytest-mypy"]
 
 [[package]]
@@ -892,6 +1030,27 @@ MarkupSafe = ">=2.0"
 
 [package.extras]
 i18n = ["Babel (>=2.7)"]
+
+[[package]]
+name = "jsii"
+version = "1.111.0"
+description = "Python client for jsii runtime"
+optional = false
+python-versions = "~=3.9"
+groups = ["main"]
+files = [
+    {file = "jsii-1.111.0-py3-none-any.whl", hash = "sha256:3084e31173e73d2eefee678c8ee31aa49428830509043057a421a4c0dde94434"},
+    {file = "jsii-1.111.0.tar.gz", hash = "sha256:db523ab9b6575c84d6ed8779cdbdc739abd48a7cb0723b66beb84c1a9dc31c7c"},
+]
+
+[package.dependencies]
+attrs = ">=21.2,<26.0"
+cattrs = ">=1.8,<24.2"
+importlib-resources = ">=5.2.0"
+publication = ">=0.0.3"
+python-dateutil = "*"
+typeguard = ">=2.13.3,<4.5.0"
+typing-extensions = ">=3.8,<5.0"
 
 [[package]]
 name = "jsonschema"
@@ -1462,6 +1621,18 @@ files = [
 ]
 
 [[package]]
+name = "publication"
+version = "0.0.3"
+description = "Publication helps you maintain public-api-friendly modules by preventing unintentional access to private implementation details via introspection."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "publication-0.0.3-py2.py3-none-any.whl", hash = "sha256:0248885351febc11d8a1098d5c8e3ab2dabcf3e8c0c96db1e17ecd12b53afbe6"},
+    {file = "publication-0.0.3.tar.gz", hash = "sha256:68416a0de76dddcdd2930d1c8ef853a743cc96c82416c4e4d3b5d901c6276dc4"},
+]
+
+[[package]]
 name = "pure-eval"
 version = "0.2.3"
 description = "Safely evaluate AST nodes without side effects"
@@ -1567,10 +1738,9 @@ testing = ["fields", "hunter", "process-tests", "pytest-xdist", "virtualenv"]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
-optional = true
+optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
 groups = ["main"]
-markers = "extra == \"doc\""
 files = [
     {file = "python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"},
     {file = "python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"},
@@ -2010,10 +2180,9 @@ jeepney = ">=0.6"
 name = "six"
 version = "1.17.0"
 description = "Python 2 and 3 compatibility utilities"
-optional = true
+optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
 groups = ["main"]
-markers = "extra == \"doc\""
 files = [
     {file = "six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"},
     {file = "six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81"},
@@ -2425,13 +2594,28 @@ urllib3 = ">=1.26.0"
 keyring = ["keyring (>=15.1)"]
 
 [[package]]
+name = "typeguard"
+version = "2.13.3"
+description = "Run-time type checker for Python"
+optional = false
+python-versions = ">=3.5.3"
+groups = ["main"]
+files = [
+    {file = "typeguard-2.13.3-py3-none-any.whl", hash = "sha256:5e3e3be01e887e7eafae5af63d1f36c849aaa94e3a0112097312aabfa16284f1"},
+    {file = "typeguard-2.13.3.tar.gz", hash = "sha256:00edaa8da3a133674796cf5ea87d9f4b4c367d77476e185e80251cc13dfbb8c4"},
+]
+
+[package.extras]
+doc = ["sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
+test = ["mypy ; platform_python_implementation != \"PyPy\"", "pytest", "typing-extensions"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.13.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
-optional = true
+optional = false
 python-versions = ">=3.8"
 groups = ["main"]
-markers = "extra == \"doc\" or (extra == \"dev\" or extra == \"doc\") and python_version < \"3.11\""
 files = [
     {file = "typing_extensions-4.13.0-py3-none-any.whl", hash = "sha256:c8dd92cc0d6425a97c18fbb9d1954e5ff92c1ca881a309c45f06ebc0b79058e5"},
     {file = "typing_extensions-4.13.0.tar.gz", hash = "sha256:0a4ac55a5820789d87e297727d229866c9650f6521b64206413c4fbada24d95b"},
@@ -2502,10 +2686,10 @@ test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 name = "zipp"
 version = "3.21.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
-optional = true
+optional = false
 python-versions = ">=3.9"
 groups = ["main"]
-markers = "(extra == \"dev\" or extra == \"doc\") and (extra == \"dev\" or python_version < \"3.10\") and (python_full_version < \"3.10.2\" or platform_machine != \"ppc64le\" and platform_machine != \"s390x\") and python_version < \"3.12\""
+markers = "(python_version < \"3.10\" or extra == \"dev\") and (python_full_version < \"3.10.2\" or platform_machine != \"ppc64le\" and platform_machine != \"s390x\") and python_version < \"3.12\""
 files = [
     {file = "zipp-3.21.0-py3-none-any.whl", hash = "sha256:ac1bbe05fd2991f160ebce24ffbac5f6d11d83dc90891255885223d42b3cd931"},
     {file = "zipp-3.21.0.tar.gz", hash = "sha256:2c9958f6430a2040341a52eb608ed6dd93ef4392e02ffe219417c1b28b5dd1f4"},
@@ -2528,4 +2712,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "a940fede95722cddb596cf3a0d2a4d3632fd728dc5e6cfab2bb5bdcf105fbe8c"
+content-hash = "52ea50d501a0c5476b3417c4c354d762d3dafcb44e045e4487272eabf3ace236"
