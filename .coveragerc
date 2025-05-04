@@ -3,7 +3,10 @@
 [run]
 omit =
     cdkit/docs/*
-    cdkit/tests/*
+    cdkit/tests/helper.py
+    cdkit/tests/bsm_enum.py
+    cdkit/tests/stack_ctx_enum.py
+    cdkit/tests/stack_enum.py
     cdkit/vendor/*
     cdkit/_version.py
     cdkit/cli.py
