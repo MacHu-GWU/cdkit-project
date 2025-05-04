@@ -2,6 +2,7 @@
 # for more info: https://coverage.readthedocs.io/en/latest/config.html
 [run]
 omit =
+    cdkit/srv/iam/gen_service_principal_enum.py
     cdkit/docs/*
     cdkit/tests/helper.py
     cdkit/tests/bsm_enum.py

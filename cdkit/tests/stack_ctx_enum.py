@@ -8,7 +8,7 @@ import cdk_mate.api as cdk_mate
 from .bsm_enum import bsm_enum
 
 
-class StackCtxEnum: # pragma: no cover
+class StackCtxEnum:  # pragma: no cover
 
     def create(
         self,
@@ -24,10 +24,32 @@ class StackCtxEnum: # pragma: no cover
         )
 
     @cached_property
+    def github_oidc_provider(self):
+        return self.create(
+            stack_name="github_oidc_provider",
+            bsm=bsm_enum.devops,
+        )
+
+    @cached_property
     def github_oidc_single_account_devops(self):
         return self.create(
             stack_name="github_oidc_single_account_devops",
             bsm=bsm_enum.devops,
         )
+
+    @cached_property
+    def github_oidc_multi_account_devops(self):
+        return self.create(
+            stack_name="github_oidc_multi_account_devops",
+            bsm=bsm_enum.devops,
+        )
+
+    @cached_property
+    def github_oidc_multi_account_dev(self):
+        return self.create(
+            stack_name="github_oidc_multi_account_dev",
+            bsm=bsm_enum.dev,
+        )
+
 
 stack_ctx_enum = StackCtxEnum()

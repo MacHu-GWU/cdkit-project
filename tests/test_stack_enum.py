@@ -10,7 +10,10 @@ class TestStackEnum:
         cls.stack_enum = stack_enum
 
     def test_synth(self):
+        _ = stack_enum.github_oidc_provider
         _ = stack_enum.github_oidc_single_account_devops
+        _ = stack_enum.github_oidc_multi_account_devops
+        _ = stack_enum.github_oidc_multi_account_dev
 
         stack_enum.app.synth()
 
