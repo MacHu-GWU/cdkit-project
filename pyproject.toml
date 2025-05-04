@@ -75,6 +75,8 @@ dev = [
     "wheel>=0.45.0,<1.0.0", # build wheel package
     "build>=1.2.1,<2.0.0", # build source distribution
     "rich>=13.8.1,<14.0.0", # pretty print
+    "requests>=2.31.0,<3.0.0", # HTTP library
+    "jinja2>=3.0.3,<4.0.0", # template engine
 ]
 
 # ------------------------------------------------------------------------------
