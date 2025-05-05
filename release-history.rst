@@ -42,7 +42,7 @@ x.y.z (Backlog)
         - ``cdkit.api.iam.GitHubOidcMultiAccountDevops``
         - ``cdkit.api.iam.GitHubOidcMultiAccountWorkloadParams``
         - ``cdkit.api.iam.GitHubOidcMultiAccountWorkload``
-    - Stack:
+    - Stacks:
         - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderParams``
         - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderStackParams``
         - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderStack``

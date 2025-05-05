@@ -53,6 +53,9 @@ GITHUB_OIDC_PROVIDER_ARN = (
     f"arn:aws:iam::{cdk.Aws.ACCOUNT_ID}:oidc-provider/"
     "token.actions.githubusercontent.com"
 )
+"""
+GitHub OIDC Provider ARN in AWS is always in this format.
+"""
 
 
 def create_github_repo_main_iam_role_assumed_by(
