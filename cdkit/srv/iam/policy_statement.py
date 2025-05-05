@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
 
+"""
+IAM policy statement constructors.
+
+Provides factory functions and helper classes to create AWS IAM policy statements
+with correct structure and syntax. Simplifies the creation of common permission
+patterns while ensuring policy best practices.
+"""
+
 import typing as T
 
 import aws_cdk as cdk
@@ -12,7 +20,7 @@ def create_get_caller_identity_statement(
     policy_statement_kwargs: T_OPT_KWARGS = None,
 ) -> iam.PolicyStatement:
     """
-    Create a policy document that allows the caller to get their identity.
+    Allows the caller to get their identity.
     """
     if policy_statement_kwargs is None:  # pragma: no cover
         policy_statement_kwargs = {}
@@ -28,7 +36,7 @@ def create_assume_role_statement(
     policy_statement_kwargs: T_OPT_KWARGS = None,
 ) -> iam.PolicyStatement:
     """
-    Create a policy statement that allows assuming roles.
+    Allows assuming specific roles.
 
     :param role_to_assume_arn_list: List of ARNs of roles to assume.
     """

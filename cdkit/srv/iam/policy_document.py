@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
 
+"""
+IAM policy document builders.
+
+Provides utilities for creating and managing complete AWS IAM policy documents.
+Includes builders for common policy types and helpers to combine policy statements
+into properly formatted policy documents.
+"""
+
 import typing as T
 
 import aws_cdk as cdk
@@ -15,7 +23,7 @@ def create_get_caller_identity_document(
     policy_document_kwargs: T_OPT_KWARGS = None,
 ) -> iam.PolicyDocument:
     """
-    Create a policy document that allows the caller to get their identity.
+    Allows the caller to get their identity.
     """
     if policy_document_kwargs is None:  # pragma: no cover
         policy_document_kwargs = {}
@@ -35,8 +43,7 @@ def create_assume_role_document(
     policy_document_kwargs: T_OPT_KWARGS = None,
 ) -> iam.PolicyDocument:
     """
-    Create a policy document that only has one permission, which is
-    to allow assuming roles.
+    Allow assuming specific roles.
 
     :param role_to_assume_arn_list: List of ARNs of roles to assume.
     """

@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
 
 """
-
+Provides functionality to create
+`GitHub OpenID Connect <https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services>`_
+providers and IAM roles that can be assumed by GitHub Actions workflows.
 """
 
 import typing as T
+import dataclasses
 
 import aws_cdk as cdk
 import aws_cdk.aws_iam as iam
 from constructs import Construct
+
+from ...base import BaseConstruct
+from ...arg import REQ, OPT, remove_optional
+from ...params import ConstructParams
+
+from .utils import role_name_to_inline_policy_name
 
 
 def create_github_oidc_provider(
@@ -87,3 +96,298 @@ def create_github_repo_main_iam_role_assumed_by(
             },
         },
     )
+
+
+@dataclasses.dataclass
+class GitHubOidcProviderParams(ConstructParams):
+    """
+    Parameters for creating a GitHub OIDC provider.
+
+    See :class:`GitHubOidcProvider`
+    """
+
+    # fmt: off
+    id: str = dataclasses.field(default="GitHubOidcProviderConstruct")
+    github_oidc_provider_res_id: str = dataclasses.field(default="GitHubOidcProviderResource")
+    url: str = dataclasses.field(default="https://token.actions.githubusercontent.com")
+    client_id_list: list[str] = dataclasses.field(default=OPT)
+    thumbprint_list: list[str] = dataclasses.field(default=OPT)
+    # fmt: on
+
+
+class GitHubOidcProvider(BaseConstruct):
+    """
+    Construct for creating a GitHub OIDC provider in AWS IAM.
+
+    :param params: :class:`GitHubOidcProviderParams`
+    """
+
+    def __init__(
+        self,
+        scope: Construct,
+        params: GitHubOidcProviderParams,
+    ):
+        super().__init__(scope=scope, params=params)
+        self.params = params
+
+        self.create_github_oidc_provider()
+
+    def create_github_oidc_provider(self):
+        self.github_oidc_provider = create_github_oidc_provider(
+            scope=self,
+            **remove_optional(
+                id=self.params.github_oidc_provider_res_id,
+                url=self.params.url,
+                client_id_list=self.params.client_id_list,
+                thumbprint_list=self.params.thumbprint_list,
+            ),
+        )
+
+
+@dataclasses.dataclass
+class GitHubOidcSingleAccountParams(ConstructParams):
+    """
+    Parameters for creating a GitHub OIDC role in a single AWS account setup.
+
+    See :class:`GitHubOidcSingleAccount`
+    """
+
+    # fmt: off
+    id: str = dataclasses.field(default="GitHubOidcSingleAccountConstruct")
+    github_repo_main_iam_role_res_id: str = dataclasses.field(default="GitHubRepoMainIamRole")
+    role_name: str = dataclasses.field(default=REQ)
+    repo_patterns: T.Union[str, T.List[str]] = dataclasses.field(default=REQ)
+    federated: str = dataclasses.field(default=GITHUB_OIDC_PROVIDER_ARN)
+    # fmt: on
+
+
+class GitHubOidcSingleAccount(BaseConstruct):
+    """
+    Construct for creating an IAM role assumable by GitHub Actions.
+
+    The role can be assumed directly by GitHub Actions and has the permission
+    to perform deployment related AWS actions directly.
+
+    :param params: :class:`GitHubOidcSingleAccountParams`
+    """
+
+    def __init__(
+        self,
+        scope: Construct,
+        params: GitHubOidcSingleAccountParams,
+    ):
+        super().__init__(scope=scope, params=params)
+        self.params = params
+
+        self.create_github_repo_main_iam_role()
+
+    def create_github_repo_main_iam_role_inline_policy_document(
+        self,
+    ) -> iam.PolicyDocument:
+        """
+        Implement this method to return the inline policy document for the IAM role.
+
+        Example:
+
+        .. code-block:: python
+
+            def ...(...) -> ...:
+                return iam.PolicyDocument(
+                    statements=[
+                        iam.PolicyStatement(
+                            actions=...,
+                            resources=...,
+                        ),
+                    ],
+                )
+        """
+        raise NotImplementedError(
+            "You need to implement the "
+            f"`{self.create_github_repo_main_iam_role_inline_policy_document}` method!"
+            f"This method should return an instance of `iam.PolicyDocument` for ..."
+        )
+        # Example:
+        # return iam.PolicyDocument(
+        #     statements=[
+        #         iam.PolicyStatement(
+        #             actions=...,
+        #             resources=...,
+        #         ),
+        #     ],
+        # )
+
+    def create_github_repo_main_iam_role(self):
+        inline_policy_name = role_name_to_inline_policy_name(self.params.role_name)
+        inline_policy_document = (
+            self.create_github_repo_main_iam_role_inline_policy_document()
+        )
+        self.github_repo_main_iam_role = iam.Role(
+            scope=self,
+            id=self.params.github_repo_main_iam_role_res_id,
+            role_name=self.params.role_name,
+            assumed_by=create_github_repo_main_iam_role_assumed_by(
+                repo_patterns=self.params.repo_patterns,
+                federated=self.params.federated,
+            ),
+            inline_policies={
+                inline_policy_name: inline_policy_document,
+            },
+        )
+
+
+@dataclasses.dataclass
+class GitHubOidcMultiAccountDevopsParams(ConstructParams):
+    """
+    Parameters for creating a GitHub OIDC devops role in a multi AWS account setup.
+
+    See :class:`GitHubOidcMultiAccountDevops`
+    """
+
+    # fmt: off
+    id: str = dataclasses.field(default="GitHubOidcMultiAccountDevopsConstruct")
+    github_repo_main_iam_role_res_id: str = dataclasses.field(default="GitHubRepoMainIamRole")
+    role_name: str = dataclasses.field(default=REQ)
+    repo_patterns: T.Union[str, T.List[str]] = dataclasses.field(default=REQ)
+    workload_iam_role_arn_list: T.List[str] = dataclasses.field(default=REQ)
+    federated: str = dataclasses.field(default=GITHUB_OIDC_PROVIDER_ARN)
+    # fmt: on
+
+
+class GitHubOidcMultiAccountDevops(BaseConstruct):
+    """
+    Construct for creating a GitHub OIDC devops role in a multi AWS account setup.
+
+    This role can be assumed by GitHub Actions and has the permission to assume
+    other roles in different AWS accounts.
+
+    :param params: :class:`GitHubOidcMultiAccountDevopsParams`
+    """
+
+    def __init__(
+        self,
+        scope: Construct,
+        params: GitHubOidcMultiAccountDevopsParams,
+    ):
+        super().__init__(scope=scope, params=params)
+        self.params = params
+
+        self.create_github_repo_main_iam_role()
+
+    def create_github_repo_main_iam_role_inline_policy_document(
+        self,
+    ) -> iam.PolicyDocument:
+        return iam.PolicyDocument(
+            statements=[
+                iam.PolicyStatement(
+                    actions=["sts:AssumeRole"],
+                    resources=self.params.workload_iam_role_arn_list,
+                )
+            ]
+        )
+
+    def create_github_repo_main_iam_role(self):
+        inline_policy_name = role_name_to_inline_policy_name(self.params.role_name)
+        inline_policy_document = (
+            self.create_github_repo_main_iam_role_inline_policy_document()
+        )
+        self.github_repo_main_iam_role = iam.Role(
+            scope=self,
+            id=self.params.github_repo_main_iam_role_res_id,
+            role_name=self.params.role_name,
+            assumed_by=create_github_repo_main_iam_role_assumed_by(
+                repo_patterns=self.params.repo_patterns,
+                federated=self.params.federated,
+            ),
+            inline_policies={
+                inline_policy_name: inline_policy_document,
+            },
+        )
+
+
+@dataclasses.dataclass
+class GitHubOidcMultiAccountWorkloadParams(ConstructParams):
+    """
+    Parameters for creating a GitHub OIDC workload role.
+
+    See :class:`GitHubOidcMultiAccountWorkload`
+    """
+
+    # fmt: off
+    id: str = dataclasses.field(default="GitHubOidcMultiAccountWorkloadConstruct")
+    github_repo_workload_iam_role_res_id: str = dataclasses.field(default="GitHubRepoWorkloadIamRole")
+    role_name: str = dataclasses.field(default=REQ)
+    devops_iam_role_arn: str = dataclasses.field(default=REQ)
+    # fmt: on
+
+
+class GitHubOidcMultiAccountWorkload(BaseConstruct):
+    """
+    Construct for creating a workload IAM role in a multi-account setup.
+
+    This role can be assumed by a devops IAM role, and it has the permission to
+    perform deployment related AWS actions.
+
+    :param params: :class:`GitHubOidcMultiAccountWorkloadParams`
+    """
+
+    def __init__(
+        self,
+        scope: Construct,
+        params: GitHubOidcMultiAccountWorkloadParams,
+    ):
+        super().__init__(scope=scope, params=params)
+        self.params = params
+
+        self.create_github_repo_workload_iam_role()
+
+    def create_github_repo_workload_iam_role_inline_policy_document(
+        self,
+    ) -> iam.PolicyDocument:
+        """
+        Implement this method to return the inline policy document for the IAM role.
+
+        Example:
+
+        .. code-block:: python
+
+            def ...(...) -> ...:
+                return iam.PolicyDocument(
+                    statements=[
+                        iam.PolicyStatement(
+                            actions=...,
+                            resources=...,
+                        ),
+                    ],
+                )
+        """
+        raise NotImplementedError(
+            "You need to implement the "
+            f"`{self.create_github_repo_workload_iam_role_inline_policy_document}` method!"
+            f"This method should return an instance of `iam.PolicyDocument` for ..."
+        )
+        # Example:
+        # return iam.PolicyDocument(
+        #     statements=[
+        #         iam.PolicyStatement(
+        #             actions=...,
+        #             resources=...,
+        #         ),
+        #     ],
+        # )
+
+    def create_github_repo_workload_iam_role(self):
+        inline_policy_name = role_name_to_inline_policy_name(self.params.role_name)
+        inline_policy_document = (
+            self.create_github_repo_workload_iam_role_inline_policy_document()
+        )
+        self.github_repo_workload_iam_role = iam.Role(
+            scope=self,
+            id=self.params.github_repo_workload_iam_role_res_id,
+            role_name=self.params.role_name,
+            assumed_by=iam.ArnPrincipal(
+                arn=self.params.devops_iam_role_arn,
+            ),
+            inline_policies={
+                inline_policy_name: inline_policy_document,
+            },
+        )

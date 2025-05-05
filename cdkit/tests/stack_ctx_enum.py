@@ -1,52 +1,46 @@
 # -*- coding: utf-8 -*-
 
+import dataclasses
 from functools import cached_property
 
 from boto_session_manager import BotoSesManager
 import cdk_mate.api as cdk_mate
+import cdkit.api as cdkit
 
 from .bsm_enum import bsm_enum
 
 
+@dataclasses.dataclass
+class StackCtx(cdk_mate.StackCtx):
+    def to_stack_params(self) -> cdkit.StackParams:
+        return cdkit.StackParams(**self.to_stack_kwargs())
+
+
 class StackCtxEnum:  # pragma: no cover
-
-    def create(
-        self,
-        bsm: BotoSesManager,
-        stack_name: str,
-    ) -> cdk_mate.StackCtx:
-        return cdk_mate.StackCtx(
-            construct_id=cdk_mate.to_camel(cdk_mate.to_slug(stack_name)),
-            stack_name=cdk_mate.to_slug(stack_name),
-            aws_account_id=bsm.aws_account_id,
-            aws_region=bsm.aws_region,
-            bsm=bsm,
-        )
-
     @cached_property
     def github_oidc_provider(self):
-        return self.create(
+        return StackCtx.new(
             stack_name="github_oidc_provider",
             bsm=bsm_enum.devops,
         )
 
     @cached_property
     def github_oidc_single_account_devops(self):
-        return self.create(
+        return StackCtx.new(
             stack_name="github_oidc_single_account_devops",
             bsm=bsm_enum.devops,
         )
 
     @cached_property
     def github_oidc_multi_account_devops(self):
-        return self.create(
+        return StackCtx.new(
             stack_name="github_oidc_multi_account_devops",
             bsm=bsm_enum.devops,
         )
 
     @cached_property
     def github_oidc_multi_account_dev(self):
-        return self.create(
+        return StackCtx.new(
             stack_name="github_oidc_multi_account_dev",
             bsm=bsm_enum.dev,
         )

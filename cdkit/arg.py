@@ -51,7 +51,6 @@ Example::
 
 """
 
-
 from .vendor import sentinel
 from .type_hint import T_KWARGS
 
@@ -59,7 +58,7 @@ REQ = sentinel.create(name="REQ")
 OPT = sentinel.create(name="OPT")
 
 
-def check_required(**kwargs: T_KWARGS):
+def check_required(**kwargs):
     """
     Check and validate required arguments in kwargs.
 
@@ -86,7 +85,7 @@ def check_required(**kwargs: T_KWARGS):
             raise ValueError(f"Missing required argument: {key!r}")
 
 
-def remove_optional(**kwargs: T_KWARGS) -> T_KWARGS:
+def remove_optional(**kwargs) -> T_KWARGS:
     """
     Remove optional parameters from kwargs.
 
@@ -96,9 +95,7 @@ def remove_optional(**kwargs: T_KWARGS) -> T_KWARGS:
     return {key: value for key, value in kwargs.items() if (value is OPT) is False}
 
 
-def prepare_kwargs(
-    **kwargs: T_KWARGS,
-) -> T_KWARGS:
+def prepare_kwargs(**kwargs) -> T_KWARGS:
     """
     Process kwargs by checking required args and removing optional ones.
 
