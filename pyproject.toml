@@ -9,7 +9,7 @@ name = "cdkit"
 # Currently, poetry 2.1.X doesn't support dynamic versioning
 # (Read https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#version)
 # So this value has to be aligned with the one in ``cdkit/_version.py``
-version = "0.1.1"
+version = "0.1.2"
 description = "A comprehensive AWS CDK utility library for creating type-safe, parameter-managed infrastructure configurations with pre-built vertical solution stacks."
 # Read https://dev-exp-share.readthedocs.io/en/latest/search.html?q=Pick+An+Open+Source+License+For+Python+Project&check_keywords=yes&area=default
 # To pick a license and update the ``license``, ``classifier`` field in ``pyproject.toml``
@@ -56,6 +56,7 @@ classifier = [
 # ------------------------------------------------------------------------------
 dependencies = [
     "aws-cdk-lib>=2.179.0,<3.0.0",
+    "func-args>=1.0.0,<2.0.0",
 ]
 
 # ------------------------------------------------------------------------------
@@ -88,7 +89,7 @@ test = [
     "boto3>=1.35.99,<2.0.0",
     "boto-session-manager>=1.7.2,<2.0.0",
     "moto>=5.0.28,<6.0.0", # Mock AWS services
-    "cdk_mate>=0.1.3,<1.0.0",
+    "cdk-mate>=0.1.4,<1.0.0", # CDK automation
 ]
 
 # ------------------------------------------------------------------------------

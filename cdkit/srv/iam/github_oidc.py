@@ -12,9 +12,9 @@ import dataclasses
 import aws_cdk as cdk
 import aws_cdk.aws_iam as iam
 from constructs import Construct
+from func_args.api import REQ, OPT, remove_optional
 
 from ...base import BaseConstruct
-from ...arg import REQ, OPT, remove_optional
 from ...params import ConstructParams
 
 from .utils import role_name_to_inline_policy_name

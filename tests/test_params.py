@@ -2,7 +2,8 @@
 
 import dataclasses
 
-from cdkit.arg import REQ, OPT
+from func_args.api import REQ, OPT
+
 from cdkit.params import ConstructParams, StackParams
 
 

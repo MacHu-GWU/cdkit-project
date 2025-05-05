@@ -340,26 +340,27 @@ ujson = ["ujson (>=5.7.0)"]
 
 [[package]]
 name = "cdk-mate"
-version = "0.1.3"
+version = "0.1.4"
 description = "A comprehensive Python toolkit for simplifying AWS CDK deployment workflows across multiple stacks"
 optional = true
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "extra == \"test\""
 files = [
-    {file = "cdk_mate-0.1.3-py3-none-any.whl", hash = "sha256:f1cd998086836dca793dc62f16dd35a4ac0110d40a7de4a5dd3d7f0c5d231d66"},
-    {file = "cdk_mate-0.1.3.tar.gz", hash = "sha256:d650e903242264a263954f1f58ea0d6c44282c4696f4e2d08ef2a4755e785a8a"},
+    {file = "cdk_mate-0.1.4-py3-none-any.whl", hash = "sha256:77ceb77d68f544a4f3dddab3c41224f521b6a7e4ce84435e62956174294b8fc4"},
+    {file = "cdk_mate-0.1.4.tar.gz", hash = "sha256:4411d076b3fb244cda6c689c6c6fcb14dc7d1be620c6d15fbb6cd13bf3ce55d0"},
 ]
 
 [package.dependencies]
 aws-cdk-lib = ">=2.179.0,<3.0.0"
 boto-session-manager = ">=1.7.2,<2.0.0"
 boto3 = ">=1.35.99,<2.0.0"
+func_args = ">=1.0.0,<2.0.0"
 
 [package.extras]
 dev = ["build (>=1.2.1,<2.0.0)", "rich (>=13.8.1,<14.0.0)", "twine (>=6.0.0,<7.0.0)", "wheel (>=0.45.0,<1.0.0)"]
 doc = ["Sphinx (>=7.4.7,<8.0.0)", "docfly (==3.0.0)", "furo (==2024.8.6)", "ipython (>=8.18.1,<8.19.0)", "nbsphinx (>=0.8.12,<1.0.0)", "pygments (>=2.18.0,<3.0.0)", "rstobj (==1.2.1)", "sphinx-copybutton (>=0.5.2,<1.0.0)", "sphinx-design (>=0.6.1,<1.0.0)", "sphinx-jinja (>=2.0.2,<3.0.0)"]
-test = ["pytest (>=8.2.2,<9.0.0)", "pytest-cov (>=6.0.0,<7.0.0)"]
+test = ["moto (>=5.0.28,<6.0.0)", "pytest (>=8.2.2,<9.0.0)", "pytest-cov (>=6.0.0,<7.0.0)"]
 
 [[package]]
 name = "certifi"
@@ -828,6 +829,23 @@ files = [
 
 [package.extras]
 devel = ["colorama", "json-spec", "jsonschema", "pylint", "pytest", "pytest-benchmark", "pytest-cache", "validictory"]
+
+[[package]]
+name = "func-args"
+version = "1.0.0"
+description = "A lightweight Python library for creating wrapper functions with enhanced argument handling using sentinel values to mark parameters as required or optional."
+optional = false
+python-versions = "<4.0,>=3.9"
+groups = ["main"]
+files = [
+    {file = "func_args-1.0.0-py3-none-any.whl", hash = "sha256:7ea74ad56a6f8e5d52f427a415d3444adc9fc3f531c05dac45cf943d7712cd45"},
+    {file = "func_args-1.0.0.tar.gz", hash = "sha256:8597ebfae6076d6eaf29b09943d3a97aaa868a33976a010a3985d68a3f9702d9"},
+]
+
+[package.extras]
+dev = ["build (>=1.2.1,<2.0.0)", "rich (>=13.8.1,<14.0.0)", "twine (>=6.0.0,<7.0.0)", "wheel (>=0.45.0,<1.0.0)"]
+doc = ["Sphinx (>=7.4.7,<8.0.0)", "docfly (==3.0.0)", "furo (==2024.8.6)", "ipython (>=8.18.1,<8.19.0)", "nbsphinx (>=0.8.12,<1.0.0)", "pygments (>=2.18.0,<3.0.0)", "rstobj (==1.2.1)", "sphinx-copybutton (>=0.5.2,<1.0.0)", "sphinx-design (>=0.6.1,<1.0.0)", "sphinx-jinja (>=2.0.2,<3.0.0)"]
+test = ["pytest (>=8.2.2,<9.0.0)", "pytest-cov (>=6.0.0,<7.0.0)"]
 
 [[package]]
 name = "furo"
@@ -3009,9 +3027,9 @@ type = ["pytest-mypy"]
 auto = []
 dev = ["build", "jinja2", "requests", "rich", "twine", "wheel"]
 doc = ["Sphinx", "docfly", "furo", "ipython", "nbsphinx", "pygments", "rstobj", "sphinx-copybutton", "sphinx-design", "sphinx-jinja"]
-test = ["boto-session-manager", "boto3", "cdk_mate", "moto", "pytest", "pytest-cov"]
+test = ["boto-session-manager", "boto3", "cdk-mate", "moto", "pytest", "pytest-cov"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "29c302b2e5a024560961c18765b52ae15cc6240006aaa5a66ee2f21d888aa165"
+content-hash = "40fb90888b95b6b691aa9b8e4e3f3ccbc3721c68cff1e0082611188d974c97f6"

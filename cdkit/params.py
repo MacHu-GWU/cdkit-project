@@ -16,8 +16,8 @@ limitations when subclassing CDK constructs like cdk.Stack:
 import typing as T
 import dataclasses
 
-from .arg import REQ, OPT, remove_optional, T_KWARGS
-from .dataclass import BaseModel
+from func_args.api import REQ, OPT, remove_optional, T_KWARGS, BaseModel
+
 
 if T.TYPE_CHECKING:  # pragma: no cover
     import aws_cdk as cdk

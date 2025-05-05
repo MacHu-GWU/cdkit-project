@@ -6,16 +6,6 @@ from cdkit import api
 def test():
     # fmt: off
     _ = api
-    _ = api.T_KWARGS
-    _ = api.T_OPT_KWARGS
-    _ = api.ParamError
-    _ = api.REQ
-    _ = api.OPT
-    _ = api.check_required
-    _ = api.remove_optional
-    _ = api.prepare_kwargs
-    _ = api.BaseModel
-    _ = api.BaseFrozenModel
     _ = api.ConstructParams
     _ = api.StackParams
     _ = api.BaseConstruct

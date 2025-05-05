@@ -13,7 +13,7 @@ import typing as T
 import aws_cdk as cdk
 import aws_cdk.aws_iam as iam
 
-from ...type_hint import T_OPT_KWARGS
+from func_args.api import T_OPT_KWARGS
 
 
 def create_get_caller_identity_statement(
