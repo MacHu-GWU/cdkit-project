@@ -73,7 +73,7 @@ def check_required(**kwargs):
         # Direct, intuitive usage
         check_required(name="Alice", id=123, email="alice@example.com")
 
-    With dictionary parameter (More cumbersome):
+    With dictionary parameter (More cumbersome)::
 
         # Requires explicit dictionary construction
         check_required({"name": "Alice", "id": 123, "email": "alice@example.com"})

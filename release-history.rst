@@ -15,6 +15,47 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
-0.1.1 (1970-01-01)
+0.1.1 (2025-05-05)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - First release
+- Add the following public APIs:
+    - Core API:
+        - ``cdkit.api.T_KWARGS``
+        - ``cdkit.api.T_OPT_KWARGS``
+        - ``cdkit.api.ParamError``
+        - ``cdkit.api.REQ``
+        - ``cdkit.api.OPT``
+        - ``cdkit.api.check_required``
+        - ``cdkit.api.remove_optional``
+        - ``cdkit.api.prepare_kwargs``
+        - ``cdkit.api.BaseModel``
+        - ``cdkit.api.BaseFrozenModel``
+        - ``cdkit.api.ConstructParams``
+        - ``cdkit.api.StackParams``
+        - ``cdkit.api.BaseConstruct``
+        - ``cdkit.api.BaseStack``
+    - Utilities and construct:
+        - ``cdkit.api.iam.role_name_to_inline_policy_name``
+        - ``cdkit.api.iam.ServicePrincipalEnum``
+        - ``cdkit.api.iam.create_get_caller_identity_statement``
+        - ``cdkit.api.iam.create_assume_role_statement``
+        - ``cdkit.api.iam.create_get_caller_identity_document``
+        - ``cdkit.api.iam.create_assume_role_document``
+        - ``cdkit.api.iam.create_github_oidc_provider``
+        - ``cdkit.api.iam.GITHUB_OIDC_PROVIDER_ARN``
+        - ``cdkit.api.iam.create_github_repo_main_iam_role_assumed_by``
+        - ``cdkit.api.iam.GitHubOidcProviderParams``
+        - ``cdkit.api.iam.GitHubOidcProvider``
+        - ``cdkit.api.iam.GitHubOidcSingleAccountParams``
+        - ``cdkit.api.iam.GitHubOidcSingleAccount``
+        - ``cdkit.api.iam.GitHubOidcMultiAccountDevopsParams``
+        - ``cdkit.api.iam.GitHubOidcMultiAccountDevops``
+        - ``cdkit.api.iam.GitHubOidcMultiAccountWorkloadParams``
+        - ``cdkit.api.iam.GitHubOidcMultiAccountWorkload``
+    - Stack:
+        - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderParams``
+        - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderStackParams``
+        - ``cdkit.api.stacks.github_oidc_provider.GitHubOidcProviderStack``
+        - ``cdkit.api.stacks.github_oidc_multi_account_devops.GitHubOidcMultiAccountDevopsParams``
+        - ``cdkit.api.stacks.github_oidc_multi_account_devops.GitHubOidcMultiAccountDevopsStackParams``
+        - ``cdkit.api.stacks.github_oidc_multi_account_devops.GitHubOidcMultiAccountDevopsStack``

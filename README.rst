@@ -50,7 +50,7 @@ Welcome to ``cdkit`` Documentation
 .. image:: https://cdkit.readthedocs.io/en/latest/_static/cdkit-logo.png
     :target: https://cdkit.readthedocs.io/en/latest/
 
-Documentation for ``cdkit``.
+``cdkit`` is a comprehensive AWS CDK utility library designed to streamline infrastructure-as-code development with enhanced parameter management, construct abstractions, and pre-built vertical solution stacks. It provides robust tools for creating AWS resources with improved type safety, parameter validation, and simplified configuration. For practical usage examples, developers are encouraged to explore the sample implementations in the `cdkit/tests/ <https://github.com/MacHu-GWU/cdkit-project/tree/main/cdkit/tests>`_ directory and the `cdk/ <https://github.com/MacHu-GWU/cdkit-project/tree/main/cdk>`_ folder, which demonstrate how to leverage the library's advanced features for creating complex cloud infrastructure configurations.
 
 
 .. _install:

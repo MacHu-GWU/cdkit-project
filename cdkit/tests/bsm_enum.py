@@ -5,7 +5,7 @@ from functools import cached_property
 from boto_session_manager import BotoSesManager
 
 
-class BsmEnum: # pragma: no cover
+class BsmEnum:  # pragma: no cover
     @cached_property
     def devops(self):
         return BotoSesManager(profile_name="esc_app_devops_us_east_1")

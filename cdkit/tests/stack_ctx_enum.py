@@ -3,7 +3,6 @@
 import dataclasses
 from functools import cached_property
 
-from boto_session_manager import BotoSesManager
 import cdk_mate.api as cdk_mate
 import cdkit.api as cdkit
 
