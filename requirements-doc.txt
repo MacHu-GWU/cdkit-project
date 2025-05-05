@@ -53,7 +53,7 @@ prompt-toolkit==3.0.50 ; python_version >= "3.9" and python_version < "4.0"
 ptyprocess==0.7.0 ; python_version >= "3.9" and python_version < "4.0" and sys_platform != "win32"
 publication==0.0.3 ; python_version >= "3.9" and python_version < "4.0"
 pure-eval==0.2.3 ; python_version >= "3.9" and python_version < "4.0"
-pycparser==2.22 ; python_version >= "3.9" and python_version < "4.0" and (platform_machine != "ppc64le" and platform_machine != "s390x" and sys_platform == "linux" and platform_python_implementation != "PyPy" or implementation_name == "pypy") and python_version >= "3.8"
+pycparser==2.22 ; python_version >= "3.9" and python_version < "4.0" and (platform_python_implementation != "PyPy" or implementation_name == "pypy")
 pygments==2.19.1 ; python_version >= "3.9" and python_version < "4.0"
 python-dateutil==2.9.0.post0 ; python_version >= "3.9" and python_version < "4.0"
 pywin32==310 ; python_version >= "3.9" and python_version < "4.0" and sys_platform == "win32" and platform_python_implementation != "PyPy"

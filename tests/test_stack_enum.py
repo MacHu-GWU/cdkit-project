@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from cdkit import api
-from cdkit.tests.stack_enum import stack_enum
+from cdkit.tests.mock_aws import BaseMockAwsTest
 
 
-class TestStackEnum:
-    @classmethod
-    def setup_class(cls):
-        cls.stack_enum = stack_enum
+class TestStackEnum(BaseMockAwsTest):
 
     def test_synth(self):
+        from cdkit.tests.stack_enum import stack_enum
+
         _ = stack_enum.github_oidc_provider
         _ = stack_enum.github_oidc_single_account_devops
         _ = stack_enum.github_oidc_multi_account_devops
