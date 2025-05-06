@@ -15,7 +15,22 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
-0.1.1 (2025-05-05)
+0.1.3 (2025-05-06)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Features and Improvements**
+
+- Add the following public APIs:
+    - Utilities and construct:
+        - ``cdkit.api.iam.create_allow_all_services_except_identity_management_statement``
+        - ``cdkit.api.iam.create_account_and_org_and_iam_read_only_statement``
+        - ``cdkit.api.iam.create_prefixed_iam_management_statement``
+        - ``cdkit.api.iam.create_require_permission_boundary_for_role_creation_statement``
+        - ``cdkit.api.iam.create_restricted_read_only_statement``
+        - ``cdkit.api.iam.create_power_ops_document``
+        - ``cdkit.api.iam.create_restricted_read_only_document``
+
+
+0.1.2 (2025-05-05)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - First release
 - Add the following public APIs:

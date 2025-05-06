@@ -76,6 +76,7 @@ class BaseStack(cdk.Stack):
 
         import dataclasses
         import aws_cdk as cdk
+        from constructs import Construct
         from cdkit.api import BaseStack, StackParams, REQ
 
         @dataclasses.dataclass
@@ -86,10 +87,12 @@ class BaseStack(cdk.Stack):
         class MyStack(BaseStack):
             def __init__(
                 self,
+                scope: Construct,
                 params: MyStackParams,
             ):
-                super().__init__(params=params)
+                super().__init__(scope=scope, params=params)
                 self.params = params
+
                 cdk.Tags.of(self).add("tech:project_name", self.params.project_name)
                 cdk.Tags.of(self).add("tech:env_name", self.params.env_name)
     """
