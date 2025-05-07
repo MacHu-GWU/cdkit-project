@@ -37,8 +37,8 @@ class BaseConstruct(Construct):
                 scope: Construct,
                 params: BucketParams,
             ):
-                super().__init__(scope=scope, **params.to_construct_kwargs())
-                self.params = params
+                super().__init__(scope=scope, params=params)
+                self.params = params # this is for type hint
 
                 # Access parameters via self.params
                 bucket = s3.Bucket(
@@ -91,7 +91,7 @@ class BaseStack(cdk.Stack):
                 params: MyStackParams,
             ):
                 super().__init__(scope=scope, params=params)
-                self.params = params
+                self.params = params # this is for type hint
 
                 cdk.Tags.of(self).add("tech:project_name", self.params.project_name)
                 cdk.Tags.of(self).add("tech:env_name", self.params.env_name)

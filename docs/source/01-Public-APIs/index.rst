@@ -19,6 +19,7 @@ Utilities and Construct
 - :func:`cdkit.api.iam.create_account_and_org_and_iam_read_only_statement <cdkit.srv.iam.policy_statement.create_account_and_org_and_iam_read_only_statement>`
 - :func:`cdkit.api.iam.create_prefixed_iam_management_statement <cdkit.srv.iam.policy_statement.create_prefixed_iam_management_statement>`
 - :func:`cdkit.api.iam.create_require_permission_boundary_for_role_creation_statement <cdkit.srv.iam.policy_statement.create_require_permission_boundary_for_role_creation_statement>`
+- :func:`cdkit.api.iam.create_restricted_read_only_statement <cdkit.srv.iam.policy_statement.create_restricted_read_only_statement>`
 - :func:`cdkit.api.iam.create_get_caller_identity_document <cdkit.srv.iam.policy_document.create_get_caller_identity_document>`
 - :func:`cdkit.api.iam.create_assume_role_document <cdkit.srv.iam.policy_document.create_assume_role_document>`
 - :func:`cdkit.api.iam.create_power_ops_document <cdkit.srv.iam.policy_document.create_power_ops_document>`

@@ -29,6 +29,16 @@ x.y.z (Backlog)
         - ``cdkit.api.iam.create_power_ops_document``
         - ``cdkit.api.iam.create_restricted_read_only_document``
 
+**Minor Improvements**
+
+- Minor improvements to the following construct to make them easier to extend:
+    - ``cdkit.api.iam.GitHubOidcSingleAccountParams``
+    - ``cdkit.api.iam.GitHubOidcSingleAccount``
+    - ``cdkit.api.iam.GitHubOidcMultiAccountDevopsParams``
+    - ``cdkit.api.iam.GitHubOidcMultiAccountDevops``
+    - ``cdkit.api.iam.GitHubOidcMultiAccountWorkloadParams``
+    - ``cdkit.api.iam.GitHubOidcMultiAccountWorkload``
+
 
 0.1.2 (2025-05-05)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

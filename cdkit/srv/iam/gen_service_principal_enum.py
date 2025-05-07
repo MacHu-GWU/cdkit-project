@@ -25,7 +25,6 @@ def get_service_principal_list() -> list[ServicePrincipal]:
     content = res.text
     content = content.replace("app.PolicyEditorConfig=", "")
     data = json.loads(content)
-    sp_list = list()
     mapping = dict()
     name_mapping = {
         "lambda": "lambda_",

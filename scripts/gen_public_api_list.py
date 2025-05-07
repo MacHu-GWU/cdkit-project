@@ -51,10 +51,12 @@ for module_name, module in cdkit.stacks.__dict__.items():
 
 dir_here = Path(__file__).absolute().parent
 path_tpl = dir_here / "public_api_list.jinja"
-path_out = dir_here / "public_api_list.rst"
+path_out_1 = dir_here / "public_api_list.rst"
+path_out_2 = dir_project_root / "docs" / "source" / "01-Public-APIs" / "index.rst"
 tpl = jinja2.Template(path_tpl.read_text())
 content = tpl.render(
     service_public_api_list=service_public_api_list,
     stack_public_api_list=stack_public_api_list,
 )
-path_out.write_text(content)
+path_out_1.write_text(content)
+path_out_2.write_text(content)

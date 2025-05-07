@@ -27,6 +27,16 @@ if T.TYPE_CHECKING:  # pragma: no cover
 class ConstructParams(BaseModel):
     """
     Parameter dataclass for CDK Construct initialization.
+
+    How to extend::
+
+        import dataclasses
+        from func_args.api import REQ
+
+        @dataclasses.dataclass
+        class MyConstructParams(ConstructParams):
+            your_custom_param_1: int = dataclasses.field(default=REQ)
+            your_custom_param_2: str = dataclasses.field(default="my_default_value")
     """
 
     id: str = dataclasses.field(default=REQ)
@@ -34,6 +44,11 @@ class ConstructParams(BaseModel):
     def to_construct_kwargs(self) -> T_KWARGS:
         """
         Generate keyword arguments for CDK construct initialization.
+
+        .. note::
+
+            To generate keyword arguments for all declared attributes,
+            use the ``.to_kwargs()`` method.
         """
         return remove_optional(id=self.id)
 
@@ -42,6 +57,16 @@ class ConstructParams(BaseModel):
 class StackParams(ConstructParams):
     """
     Parameter dataclass for CDK Stack initialization.
+
+    How to extend::
+
+        import dataclasses
+        from func_args.api import REQ
+
+        @dataclasses.dataclass
+        class MyStackParams(StackParams):
+            your_custom_param_1: int = dataclasses.field(default=REQ)
+            your_custom_param_2: str = dataclasses.field(default="my_default_value")
     """
 
     analytics_reporting: bool = dataclasses.field(default=OPT)
@@ -59,6 +84,11 @@ class StackParams(ConstructParams):
     def to_stack_kwargs(self) -> T_KWARGS:
         """
         Generate keyword arguments for CDK Stack initialization.
+
+        .. note::
+
+            To generate keyword arguments for all declared attributes,
+            use the ``.to_kwargs()`` method.
         """
         return remove_optional(
             id=self.id,
