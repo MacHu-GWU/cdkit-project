@@ -5,6 +5,10 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.11"
+    nodejs: "22"
+  jobs:
+    pre_create_environment:
+      - npm install -g aws-cdk@2.1010.0
 
 sphinx:
   configuration: docs/source/conf.py
